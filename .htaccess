@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Allow access to all files in this directory
+Order allow,deny
+Allow from all
+
+# Redirect to views directory for PHP files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ views/$1 [L]
+
+# If no specific file requested, redirect to login.php
+DirectoryIndex views/login.php
